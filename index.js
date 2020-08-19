@@ -76,29 +76,62 @@ console.log(getYears(getFinals));
 
 function getWinners(callback) {
 
+const winners = [];
+
+for(let i=0; i<callback.length; i++){
+    if(callback[i]["Home Team Goals"] > callback[i]["Away Team Goals"]){
+        winners.push(callback[i]["Home Team Name"])
+    }else if(callback[i]["Away Team Goals"] > callback[i]["Home Team Goals"]){
+        winners.push(callback[i]["Away Team Name"])
+    }else if(callback[i]["Away Team Goals"] === callback[i]["Home Team Goals"]){
+        winners.push(callback[i]["Win conditions"])
+    }
     
+    }
+    return winners
 
-   const awayScore = callback.map(function(item){
-    return item["Away Team Goals"]
-
-});
-return awayScore
-};
+}
 
 console.log(getWinners(getFinals));
 
+// const winners = callback.map(function(item){
+//     return `${item["Home Team Name"]}: ${item["Home Team Goals"]}, ${item["Away Team Name"]}: ${item["Away Team Goals"]}, ${item["Win conditions"]}`
+// });
+
+// const newArray = Object.fromEntries(winners)
+
+//     const homeScore = callback.map(function(item){
+//          item["Home Team Goals"]
+   
+//    });
+//    return homeScore
+
+//    const awayScore = callback.map(function(item){
+//     return item["Away Team Goals"]
+
+// });
+// return awayScore
+
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
+
+getWinners(cb)[map] => return W
+
+getWinnerByYears (year, country, getWinner)
 
 Parameters: 
  * callback function getWinners
  * callback function getYears
  */
 
-function getWinnersByYear(/* code here */) {
-
+function getWinnersByYear(cbYear, cbWin) {
+const headline = [];
+for(let i=0; i<cbYear.length; i++){
+    headline.push(`In ${cbYear[i]}, ${cbWin[i]} won the World Cup!`)
+}
+return headline
 };
 
-getWinnersByYear();
+console.log(getWinnersByYear(getYears(getFinals), getWinners(getFinals)));
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
