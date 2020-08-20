@@ -78,16 +78,26 @@ function getWinners(callback) {
 
 const winners = [];
 
-for(let i=0; i<callback.length; i++){
-    if(callback[i]["Home Team Goals"] > callback[i]["Away Team Goals"]){
-        winners.push(callback[i]["Home Team Name"])
-    }else if(callback[i]["Away Team Goals"] > callback[i]["Home Team Goals"]){
-        winners.push(callback[i]["Away Team Name"])
-    }else if(callback[i]["Away Team Goals"] === callback[i]["Home Team Goals"]){
-        winners.push(callback[i]["Win conditions"])
+callback.forEach(function(item){
+    if(item["Home Team Goals"] > item["Away Team Goals"]){
+        winners.push(item["Home Team Name"])
+    }else if(item["Away Team Goals"] > item["Home Team Goals"]){
+        winners.push(item["Away Team Name"])
+    }else if(item["Away Team Goals"] === item["Home Team Goals"]){
+        winners.push(item["Win conditions"])
     }
+})
+
+// for(let i=0; i<callback.length; i++){
+//     if(callback[i]["Home Team Goals"] > callback[i]["Away Team Goals"]){
+//         winners.push(callback[i]["Home Team Name"])
+//     }else if(callback[i]["Away Team Goals"] > callback[i]["Home Team Goals"]){
+//         winners.push(callback[i]["Away Team Name"])
+//     }else if(callback[i]["Away Team Goals"] === callback[i]["Home Team Goals"]){
+//         winners.push(callback[i]["Win conditions"])
+//     }
     
-    }
+//     }
     return winners
 
 }
@@ -141,10 +151,12 @@ const goals = data.map(function(item){
     return item["Home Team Goals"] + item["Away Team Goals"]
  });
 
-const avgGoals = goals.reduce(function(a,b){
-    return a+b;
-},0);
+// const avgGoals = goals.reduce(function(a,b){
+//     return a+b;
+// },0);
     
+const avgGoals = goals.reduce((a,b) => a+b,0);
+
 return avgGoals/data.length
 }
 
@@ -164,13 +176,13 @@ console.log(getAverageGoals(fifaData));
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+function getCountryWins(data, team_initials) {
 
-    /* code here */
-
+    const teamMatches = data.filter(item => item["Home Team Initials"] === team_initials && item["Home Team Goals"] > item["Away Team Goals"] || item["Away Team Initials"] === team_initials && item["Away Team Goals"] > item["Home Team Goals"]);
+    return teamMatches.length
 };
 
-getCountryWins();
+console.log(getCountryWins(fifaData, "USA"));
 
 
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
