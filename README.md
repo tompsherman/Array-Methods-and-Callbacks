@@ -49,10 +49,10 @@ Your goal today will be to manipulate the data using array methods and callbacks
 
 ### Task 1: Set up Project
 
-Using VSCode and a Command Line:
+Using VSCode and a Com mand Line:
 
 1. Fork repo and add TL as collaborator on Github.
-2. Clone your fork (not Lambda's repo by mistake!).
+2. Clone your fork (no t Lambda's repo by mistake!).
 3. `cd` into your newly cloned repository.
 4. Create a new branch by typing `git checkout -b <firstName-lastName>`.
 
@@ -64,7 +64,7 @@ You may want to use the [World Cup summary data](https://www.foxsports.com/socce
 
 ### Task 2b: Exit Ticket
 
-Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/pHkwTDmFG4moZNJWy/64uEYwk5AxxRxE).
+Once you begin, you will have 15 minutes to answer the que stions [here](https://app.codesignal.com/public-test/pHkwTDmFG4moZNJWy/64uEYwk5AxxRxE).
 
 The completion of these questions is mandatory for MVP. However, passing the quiz doesn't affect your standing as a Lambda School student whatsoever. This is Lambda School testing itself! Please answer honestly and to the best of your ability without using external references.
 
